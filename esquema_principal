@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Páginas Web - Plataforma de Rifas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Colores sutiles para cada página */
+        .page-registro { background-color: #f8f9fa; }
+        .page-dashboard { background-color: #f0f8ff; }
+        .page-crear-rifa { background-color: #e6f7ff; }
+        .page-resultados { background-color: #f9fbe7; }
+        .page-contacto { background-color: #fef7e1; }
+        .page-terminos { background-color: #f8ecef; }
+
+        /* Estilo de la tarjeta de saludo */
+        .user-info-card {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tarjetas de rifas activas */
+        .raffle-card {
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: transform 0.2s;
+        }
+        .raffle-card:hover {
+            transform: scale(1.02);
+            cursor: pointer;
+        }
+
+        /* Botones de acción */
+        .raffle-card .btn {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Página de Registro/Inicio de Sesión -->
+<section class="container py-5 bg-light rounded shadow-sm page-registro">
+    <h1 class="text-center">Regístrate o Inicia Sesión</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="correo@ejemplo.com">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                </div>
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Confirma tu Contraseña</label>
+                    <input type="password" class="form-control" id="confirm-password" placeholder="Repite tu contraseña">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+            </form>
+            <p class="text-center mt-3">¿Ya tienes cuenta? <a href="#">Inicia Sesión</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- Dashboard del Usuario -->
+<section class="container py-5 bg-light rounded shadow-sm page-dashboard">
+    <h1 class="text-center mb-4">Panel de Usuario</h1>
+    <div class="user-info-card text-center">
+        <h3>Hola, <span id="usuario-registrado" class="text-primary">Usuario</span>!</h3>
+        <p>Días restantes para el vencimiento de tu cuenta: <span id="dias-vencimiento" class="text-danger fw-bold">30</span></p>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Rifas Activas</h3>
+            <!-- Tarjetas de rifas activas -->
+            <div class="raffle-card" data-bs-toggle="modal" data-bs-target="#raffleModal1">
+                <h5 class="fw-bold">Rifa 1</h5>
+                <p>Descripción breve del producto</p>
+                <div>
+                    <button class="btn btn-info btn-sm">Compartir</button>
+                    <button class="btn btn-warning btn-sm">Ejecutar Sorteo</button>
+                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                </div>
+            </div>
+            <div class="raffle-card" data-bs-toggle="modal" data-bs-target="#raffleModal2">
+                <h5 class="fw-bold">Rifa 2</h5>
+                <p>Descripción breve del producto</p>
+                <div>
+                    <button class="btn btn-info btn-sm">Compartir</button>
+                    <button class="btn btn-warning btn-sm">Ejecutar Sorteo</button>
+                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Rifas Finalizadas</h3>
+            <ul class="list-group">
+                <li class="list-group-item">Rifa 3</li>
+                <li class="list-group-item">Rifa 4</li>
+            </ul>
+        </div>
+    </div>
+    <div class="mt-4 text-center">
+        <button class="btn btn-success">Crear Nueva Rifa</button>
+    </div>
+</section>
+
+<!-- Modal para mostrar detalles de rifas -->
+<div class="modal fade" id="raffleModal1" tabindex="-1" aria-labelledby="raffleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="raffleModalLabel1">Detalles de Rifa 1</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Nombre del Producto:</strong> Producto 1</p>
+                <p><strong>Número de Participantes:</strong> 50</p>
+                <p><strong>Fecha del Sorteo:</strong> 2025-02-01</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="raffleModal2" tabindex="-1" aria-labelledby="raffleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="raffleModalLabel2">Detalles de Rifa 2</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Nombre del Producto:</strong> Producto 2</p>
+                <p><strong>Número de Participantes:</strong> 100</p>
+                <p><strong>Fecha del Sorteo:</strong> 2025-02-15</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL Creación de Rifas -->
+<section class="container py-5 bg-light rounded shadow-sm page-crear-rifa">
+    <h1 class="text-center">Crear Nueva Rifa</h1>
+    <form>
+        <div class="mb-3">
+            <label for="raffle-name" class="form-label">Nombre de la Rifa</label>
+            <input type="text" class="form-control" id="raffle-name" placeholder="Nombre de la Rifa">
+        </div>
+        <div class="mb-3">
+            <label for="raffle-description" class="form-label">Descripción del Producto</label>
+            <textarea class="form-control" id="raffle-description" rows="3" placeholder="Describe el premio"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="raffle-participants" class="form-label">Cantidad de Participantes</label>
+            <select class="form-select" id="raffle-participants">
+                <option value="150">150</option>
+                <option value="100">100</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="raffle-date" class="form-label">Fecha del Sorteo (Opcional)</label>
+            <input type="date" class="form-control" id="raffle-date">
+        </div>
+        <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="auto-draw">
+            <label class="form-check-label" for="auto-draw">Activar sorteo automático</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Guardar Rifa</button>
+    </form>
+</section>
+
+<!-- Página de Resultados del Sorteo -->
+<section class="container py-5 bg-light rounded shadow-sm page-resultados">
+    <h1 class="text-center">Resultados del Sorteo</h1>
+    <button class="btn btn-warning w-100 mb-3">Ejecutar Sorteo</button>
+    <div class="alert alert-success">Ganador: Nombre del Ganador (Número Ganador)</div>
+    <button class="btn btn-primary w-100">Compartir Resultado</button>
+</section>
+
+<!-- Página de Contacto y Soporte -->
+<section class="container py-5 bg-light rounded shadow-sm page-contacto">
+    <h1 class="text-center">Contacto y Soporte</h1>
+    <form>
+        <div class="mb-3">
+            <label for="contact-name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="contact-name" placeholder="Tu nombre">
+        </div>
+        <div class="mb-3">
+            <label for="contact-email" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="contact-email" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="message" rows="4" placeholder="Escribe tu mensaje"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+    </form>
+</section>
+
+<!-- Página de Términos y Condiciones -->
+<section class="container py-5 bg-light rounded shadow-sm page-terminos">
+    <h1 class="text-center">Términos y Condiciones</h1>
+    <p>Texto legal sobre las responsabilidades de los usuarios y la plataforma.</p>
+</section>
+
+<footer class="bg-dark text-white text-center py-4">
+    <p>&copy; 2025 Plataforma de Rifas. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
